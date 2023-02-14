@@ -6,7 +6,13 @@ const axios = require("axios");
 const bodyParser = require("body-parser");
 const cheerio = require("cheerio");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+  })
+);
 app.use(bodyParser.json());
 app.get("/", async (req, res) => {
   const axiosResponse = await axios.request({
